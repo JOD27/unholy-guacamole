@@ -1,7 +1,9 @@
 package com.example.unholy_guacamole;
 
 import android.os.Bundle;
+
 import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        EditText messageInput = (EditText) findViewById(R.id.editText);
+        messageInput.getText().append(	"\uD83E\uDD14");
     }
 
 
