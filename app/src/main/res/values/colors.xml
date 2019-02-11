@@ -3,4 +3,14 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="KeyboardBack">#F7F7F7</color>
+    <color name="KeyboardDiv">#F7F7F7</color>
+    <color name="KeyboardPressed">#F7F7F7</color>
+    <color name="DoneKey">#567ACE</color>
+    <color name="SpaceKey">#999999</color>
+
+
+    <color name="textcolour">#000000</color>
+
 </resources>
+
