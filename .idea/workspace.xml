@@ -8,8 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="370d1f4e-f102-4e9d-9c52-b316bfa6cd11" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,7 +27,7 @@
     <session id="-330253619">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="1" />
@@ -54,13 +52,20 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="java" value="811" />
+          <entry key="txt" value="85" />
           <entry key="xml" value="1408" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="811" />
+          <entry key="PLAIN_TEXT" value="85" />
           <entry key="XML" value="1408" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.create.new" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -181,6 +186,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -483,14 +493,21 @@
       <option name="presentableId" value="Default" />
       <updated>1549821578732</updated>
     </task>
+    <task id="LOCAL-00001" summary="White background keyboard.&#10;Spacebar, Done &amp; backspace buttons same colour.">
+      <created>1549899481032</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1549899481032</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1233" height="735" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49752474" visible="true" weight="0.33674338" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49752474" visible="true" weight="0.33674338" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" sideWeight="0.50247526" side_tool="true" weight="0.32992327" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -503,8 +520,8 @@
       <window_info anchor="bottom" id="Debug" order="3" />
       <window_info anchor="bottom" id="Terminal" order="4" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5029838" side_tool="true" weight="0.29069766" />
-      <window_info anchor="bottom" id="Version Control" order="6" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4970162" visible="true" weight="0.22591361" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="6" visible="true" weight="0.32890365" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4970162" weight="0.22591361" />
       <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
@@ -516,6 +533,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="White background keyboard.&#10;Spacebar, Done &amp; backspace buttons same colour." />
+    <option name="LAST_COMMIT_MESSAGE" value="White background keyboard.&#10;Spacebar, Done &amp; backspace buttons same colour." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/MainActivity.java">
