@@ -13,6 +13,7 @@
             android:name=".FirstKeyboard"
             android:label="FirstKeyboard"
             android:permission="android:.permission.BIND_INPUT_METHOD">
+
             <meta-data android:name="android.view.in" android:resource="@xml/method"/>
             <intent-filter>
                 <action android:name="android.view.Inputmethod"/>
