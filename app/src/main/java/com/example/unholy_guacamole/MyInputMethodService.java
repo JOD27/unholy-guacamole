@@ -45,7 +45,7 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                     break;
                 case Keyboard.KEYCODE_DELETE :
                     CharSequence selectedText = inputConnection.getSelectedText(0);
-
+                    caps = !caps;
                     if (TextUtils.isEmpty(selectedText)) {
                         inputConnection.deleteSurroundingText(2, 0);
                     } else {
