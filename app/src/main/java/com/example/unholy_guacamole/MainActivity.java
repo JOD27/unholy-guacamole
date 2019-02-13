@@ -9,9 +9,11 @@ import android.util.Log;
 import android.widget.EditText;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         messageInput.getText().append(	"\uD83E\uDD14");
 
         DBhelper = new DatabaseHelper(this);
+        DBhelper.deleteData();
 
         //if assets directory is not empty, read from file, generate table and delete from file.
         //else if asseets directory is emtpty, do nothing
@@ -47,34 +50,46 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
         return true;
-
     }
 
 
     private void create_from_assets(){
         //create database from file
-        boolean key = true;     //false means we have read a value
+        //create swear table
+        Thread create_s_table = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                read_file_to_db("swears.txt", DatabaseHelper.S_TABLE_NAME, DatabaseHelper.S_SWEAR);
+            }
+        });
+        Thread create_r_table = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                read_file_to_db("replacements.txt", DatabaseHelper.R_TABLE_NAME, DatabaseHelper.R_REPLACEMENT);
+            }
+        });
+        create_s_table.start();
+        create_r_table.start();
+
+    }
+
+    private void read_file_to_db(String fname, String table_name, String col_name){
+        //reads from a given txt file to a database
         BufferedReader reader = null;
-        String key_swear = "empty";
         try{
-            reader = new BufferedReader(new FileReader(swearfilename));
+            reader = new BufferedReader(new InputStreamReader((getAssets().open(fname))));
             String line = reader.readLine();
             while(line != null){
-                if(!key){
-                    // take current value from line, pair with with the key from the previous line,
-                    // and aadd the two to a new row in the daatabase.
-                    DBhelper.add_kv(key_swear, line);
-                }else{
-                    key_swear = line;
-                }
+                DBhelper.add_entry(line ,table_name, col_name);
 
-                key = !key;
                 line = reader.readLine();
             }
             reader.close();
         }catch (Exception e){
             Log.d("d_tag", e.toString() + "filereader failed, file possibly doesnt exist?");
         }
+
+
 
     }
 
