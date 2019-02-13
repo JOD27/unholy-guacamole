@@ -7,12 +7,11 @@
     <color name="KeyboardDiv">#F7F7F7</color>
     <color name="KeyboardPressed">#F7F7F7</color>
     <color name="DoneKey">#567ACE</color>
+
     <color name="SpaceKey">#999999</color>
     <color name="transparent">#00999999</color>
 
-
-
-    <color name="textcolour">#2B2B2B</color>
+    <color name="textcolour">#000000</color>
 
 </resources>
 
