@@ -36,13 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
         boolean dosetup = check_setupneeded(); // check if  we nneed to do setup
 
-        if(dosetup){
+        if(true){
+            Log.d("d_tag", "doing setup");
             create_from_assets();
         }
+        DBhelper.check_table_size();
     }
 
     private boolean check_setupneeded() {
-        AssetManager manager = getResources().getAssets();
+        AssetManager manager = getAssets();
         try {
             InputStream is = manager.open(swearfilename);
             is.close();
@@ -56,20 +58,8 @@ public class MainActivity extends AppCompatActivity {
     private void create_from_assets(){
         //create database from file
         //create swear table
-        Thread create_s_table = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                read_file_to_db("swears.txt", DatabaseHelper.S_TABLE_NAME, DatabaseHelper.S_SWEAR);
-            }
-        });
-        Thread create_r_table = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                read_file_to_db("replacements.txt", DatabaseHelper.R_TABLE_NAME, DatabaseHelper.R_REPLACEMENT);
-            }
-        });
-        create_s_table.start();
-        create_r_table.start();
+        read_file_to_db("swears.txt", DatabaseHelper.S_TABLE_NAME, DatabaseHelper.S_SWEAR);
+        read_file_to_db("replacements.txt", DatabaseHelper.R_TABLE_NAME, DatabaseHelper.R_REPLACEMENT);
 
     }
 
@@ -77,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         //reads from a given txt file to a database
         BufferedReader reader = null;
         try{
-            reader = new BufferedReader(new InputStreamReader((getAssets().open(fname))));
+            reader = new BufferedReader(new InputStreamReader((getResources().getAssets().open(fname))));
             String line = reader.readLine();
             while(line != null){
                 DBhelper.add_entry(line ,table_name, col_name);

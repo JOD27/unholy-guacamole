@@ -62,20 +62,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void add_entry(final String val, final String table_name,final String col){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                new_row(val, table_name, col);
-            }
-        }).start();
-    }
-
-    public void new_row(final String val, String table_name, String col) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(col, val);
         db.insert(table_name, null, contentValues);
         db.close();
+
     }
+
+    public void check_table_size(){
+        //returns the number of rows (notes) in the database
+        SQLiteDatabase database = this.getReadableDatabase();
+        long row_count_s = DatabaseUtils.queryNumEntries(database, S_TABLE_NAME);
+        long row_count_r = DatabaseUtils.queryNumEntries(database, R_TABLE_NAME);
+        database.close();
+
+        Log.d("d_tag", "swears: "+String.valueOf(row_count_s) + "\nreplacesments: " + String.valueOf(row_count_r));
+    }
+
+
 
 }
