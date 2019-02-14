@@ -3,6 +3,7 @@ import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
@@ -10,13 +11,15 @@ import android.view.inputmethod.InputConnection;
 
 public class MyInputMethodService extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 
-
     private KeyboardView keyboardView;
     private Keyboard keyboard;
     private boolean caps = false;
+    DatabaseHelper DBhelper = new DatabaseHelper(this);
+    private int s_table_size =0;
 
     @Override
     public View onCreateInputView() {
+
         keyboardView = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard_view, null);
         keyboard = new Keyboard(this, R.xml.keys_layout);
         keyboardView.setKeyboard(keyboard);
@@ -57,6 +60,9 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                     inputConnection.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
 
                     break;
+                case 32:
+                    //example place to generate random words and input in table
+                    Log.d("d_tag", DBhelper.generate_random_word());
                 default :
                     char code = (char) primaryCode;
                     if(Character.isLetter(code) && caps){
@@ -72,7 +78,6 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
 
     @Override
     public void onText(CharSequence charSequence) {
-
     }
 
     @Override

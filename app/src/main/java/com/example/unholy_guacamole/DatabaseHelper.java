@@ -6,13 +6,13 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 
-import java.util.ArrayList;
+import java.util.Random;
+
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private final String D_TAG = "D_TAG";
+
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "swear_table.db";
     //table variables: S is for the swear table, and R is for replacement table
@@ -24,6 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String R_KEY_ID = "r_id";
     public static final String R_REPLACEMENT = "replacement";
 
+    public int s_table_size = -1;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -57,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db= this.getWritableDatabase();
         db.execSQL("DELETE FROM " + R_TABLE_NAME);
         db.execSQL("DELETE FROM " + S_TABLE_NAME);
-        Log.d(D_TAG, "deleted data");
+        //Log.d(D_TAG, "deleted data");
         db.close();
     }
 
@@ -70,38 +71,61 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public long check_table_size(){
+    public long get_r_table_size(){
         //returns the number of rows (notes) in the database
         SQLiteDatabase database = this.getReadableDatabase();
-        long row_count_s = DatabaseUtils.queryNumEntries(database, S_TABLE_NAME);
-        //long row_count_r = DatabaseUtils.queryNumEntries(database, R_TABLE_NAME);
+        long row_count_r = DatabaseUtils.queryNumEntries(database, R_TABLE_NAME);
         database.close();
 
-        //Log.d("d_tag", "swears: "+String.valueOf(row_count_s) + "\nreplacesments: " + String.valueOf(row_count_r));
-        return row_count_s;
+        return row_count_r;
     }
 
-    public void return_replacement(int row_id){
-        //returns a single replacement_word from the database.
+    public String return_replacement(int row_id){
+        //returns a single replacement_word from the table,
+        // in the range from 1 to get_table_size().
         SQLiteDatabase database = this.getReadableDatabase();
+
         Cursor cursor = database.rawQuery(
-                "SELECT "+R_REPLACEMENT + " FROM " + R_TABLE_NAME + " WHERE " + R_KEY_ID + " = " + String.valueOf(row_id), null);
-        if (cursor != null){
-            cursor.moveToFirst();
-            String rep = "empty cursor";
+                "SELECT "+R_REPLACEMENT+" FROM " + R_TABLE_NAME + " WHERE "
+                        + R_KEY_ID + " = " + String.valueOf(row_id), null);
+        String rep = "";
+        if (cursor != null && cursor.moveToFirst()){
            try{
                 rep =cursor.getString(0);
             }catch (Exception e){
-                Log.d(D_TAG, e.toString());
+                Log.d("d_tag", e.toString());
             }
+            //Log.d("d_tag","found replacement: " + rep);
             cursor.close();
-            database.close();
-            Log.d("d_tag","found replacement: " + rep);
-        }else{
-            cursor.close();
-            database.close();
-            Log.d("d_tag"," blank cursor");
         }
+        database.close();
+        return rep;
+    }
+
+    public boolean search_swears(String swear){
+        //searches the table of swears and returns true if the swear is found
+        SQLiteDatabase db = this.getReadableDatabase();
+        String querey =  "SELECT EXISTS (SELECT * FROM "+S_TABLE_NAME+" WHERE "+S_SWEAR+"='"+swear+"' LIMIT 1)";
+        Cursor cursor = db.rawQuery(querey, null);
+        boolean exists= false;
+        if (cursor != null && cursor.moveToFirst() && cursor.getInt(0) == 1){
+            Log.d("d_tag", "found swear in table");
+            exists = true;
+            cursor.close();
+        }
+        db.close();
+        return exists;
+    }
+
+
+    public String generate_random_word(){
+        if (s_table_size == -1){
+            s_table_size = (int) get_r_table_size();
+        }
+        int rand = new Random().nextInt(s_table_size) +1;
+        // +1 is to get rid of case where 0 appears and has no index in table
+        return return_replacement(rand);
+
     }
 
 

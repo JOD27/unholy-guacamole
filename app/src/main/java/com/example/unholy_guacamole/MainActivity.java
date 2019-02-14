@@ -1,13 +1,10 @@
 package com.example.unholy_guacamole;
 
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.EditText;
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 
 
@@ -30,13 +27,15 @@ public class MainActivity extends AppCompatActivity {
         //if assets directory is not empty, read from file, generate table and delete from file.
         //else if asseets directory is emtpty, do nothing
 
-        if(DBhelper.check_table_size() == 0){
+        if(DBhelper.get_r_table_size() == 0){
             Log.d("d_tag", "doing setup");
             create_from_assets();
         }
-          //used for testing that all databases had been initialised
-
-        //DBhelper.return_replacement(2);     //testing the database
+        //used for testing that all databases had been initialised
+        //String replacement = DBhelper.return_replacement(2);     //testing the database
+        //boolean exists = DBhelper.search_swears("xxx");
+        //boolean doesnt_exist = DBhelper.search_swears("xxas");
+        //Log.d("d_tag", replacement + " 0: " + exists + " 1: " + doesnt_exist);
     }
 
 
@@ -66,5 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     "filereader failed, file possibly doesnt exist?");
         }
     }
+
+
 
 }
