@@ -1,24 +1,20 @@
 package com.example.unholy_guacamole;
 
 import android.content.res.AssetManager;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.EditText;
-
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private String swearfilename = "loadfromfile.txt";
+    private String s_file = "swears.txt";   //file with swears
+    private String r_file = "replacements.txt";   //file with replacements for swears
     private DatabaseHelper DBhelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,37 +25,26 @@ public class MainActivity extends AppCompatActivity {
         messageInput.getText().append(	"\uD83E\uDD14");
 
         DBhelper = new DatabaseHelper(this);
-        DBhelper.deleteData();
+        //DBhelper.deleteData();    //used for testing creation and deletion of databsese
 
         //if assets directory is not empty, read from file, generate table and delete from file.
         //else if asseets directory is emtpty, do nothing
 
-        boolean dosetup = check_setupneeded(); // check if  we nneed to do setup
-
-        if(true){
+        if(DBhelper.check_table_size() == 0){
             Log.d("d_tag", "doing setup");
             create_from_assets();
         }
-        DBhelper.check_table_size();
-    }
+          //used for testing that all databases had been initialised
 
-    private boolean check_setupneeded() {
-        AssetManager manager = getAssets();
-        try {
-            InputStream is = manager.open(swearfilename);
-            is.close();
-        } catch (IOException e) {
-            return false;
-        }
-        return true;
+        //DBhelper.return_replacement(2);     //testing the database
     }
 
 
     private void create_from_assets(){
         //create database from file
         //create swear table
-        read_file_to_db("swears.txt", DatabaseHelper.S_TABLE_NAME, DatabaseHelper.S_SWEAR);
-        read_file_to_db("replacements.txt", DatabaseHelper.R_TABLE_NAME, DatabaseHelper.R_REPLACEMENT);
+        read_file_to_db(s_file, DatabaseHelper.S_TABLE_NAME, DatabaseHelper.S_SWEAR);
+        read_file_to_db(r_file, DatabaseHelper.R_TABLE_NAME, DatabaseHelper.R_REPLACEMENT);
 
     }
 
@@ -67,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         //reads from a given txt file to a database
         BufferedReader reader = null;
         try{
-            reader = new BufferedReader(new InputStreamReader((getResources().getAssets().open(fname))));
+            reader = new BufferedReader(new InputStreamReader(
+                    (getResources().getAssets().open(fname))));
             String line = reader.readLine();
             while(line != null){
                 DBhelper.add_entry(line ,table_name, col_name);
@@ -76,13 +62,9 @@ public class MainActivity extends AppCompatActivity {
             }
             reader.close();
         }catch (Exception e){
-            Log.d("d_tag", e.toString() + "filereader failed, file possibly doesnt exist?");
+            Log.d("d_tag", e.toString()+
+                    "filereader failed, file possibly doesnt exist?");
         }
-
-
-
     }
-
-
 
 }

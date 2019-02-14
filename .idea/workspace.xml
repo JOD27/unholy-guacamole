@@ -11,9 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0acaa058-af3e-4017-aedb-e46cce856fc1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/database_test.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/replacements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/replacements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/DatabaseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/DatabaseHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/MainActivity.java" afterDir="false" />
     </list>
@@ -79,16 +78,16 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="3" />
-          <entry key="java" value="2424" />
-          <entry key="txt" value="196" />
+          <entry key="java" value="3170" />
+          <entry key="txt" value="313" />
           <entry key="xml" value="527" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="3" />
-          <entry key="JAVA" value="2424" />
-          <entry key="PLAIN_TEXT" value="196" />
+          <entry key="JAVA" value="3170" />
+          <entry key="PLAIN_TEXT" value="313" />
           <entry key="XML" value="527" />
         </counts>
       </usages-collector>
@@ -97,6 +96,7 @@
           <entry key="class" value="1" />
           <entry key="gradle" value="4" />
           <entry key="java" value="10" />
+          <entry key="txt" value="3" />
           <entry key="xml" value="38" />
         </counts>
       </usages-collector>
@@ -105,6 +105,7 @@
           <entry key="CLASS" value="1" />
           <entry key="Groovy" value="4" />
           <entry key="JAVA" value="10" />
+          <entry key="PLAIN_TEXT" value="3" />
           <entry key="XML" value="38" />
         </counts>
       </usages-collector>
@@ -141,8 +142,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/DatabaseHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="71" selection-start-line="71" selection-end-line="71" />
+            <state relative-caret-position="315">
+              <caret line="97" column="46" selection-start-line="97" selection-start-column="46" selection-end-line="97" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -151,13 +164,28 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/MainActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/assets/replacements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="740">
-              <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state>
+              <caret lean-forward="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/assets/swears.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="1702" column="4" selection-start-line="1702" selection-start-column="4" selection-end-line="1702" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/assets/loadfromfiile.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -170,11 +198,6 @@
             </state>
           </provider>
           <provider editor-type-id="android-manifest" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -194,25 +217,6 @@
               <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/keys_layout.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/keyboard_view.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -240,7 +244,15 @@
     <findStrings>
       <find>4</find>
       <find>1</find>
+      <find>!</find>
+      <find>sh</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+    <dirStrings>
+      <dir>D:\Users\Brian\AndroidStudioProjects\unholy-guacamole\app\src\main\assets</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -266,9 +278,9 @@
         <option value="$PROJECT_DIR$/app/src/main/assets/loadfromfiile.txt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/database_helper.java" />
         <option value="$PROJECT_DIR$/app/src/main/assets/swears.txt" />
-        <option value="$PROJECT_DIR$/app/src/main/assets/replacements.txt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/DatabaseHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/DatabaseHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/assets/replacements.txt" />
       </list>
     </option>
   </component>
@@ -414,6 +426,7 @@
     <property name="SearchEverywhereHistoryKey" value="asst&#9;PSI&#9;JAVA://java.lang.AssertionStatusDirectives" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="device.picker.selection" value="ec2af4c5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/assets" />
     <property name="settings.editor.selected.configurable" value="tasks.servers" />
   </component>
   <component name="RecentsManager">
@@ -642,7 +655,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550067857093</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="database gets initialised from file on startup">
+      <created>1550104013479</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1550104013479</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -651,13 +671,14 @@
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.24253732" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.24253732" />
       <window_info id="Structure" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="0" sideWeight="0.49946696" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Find" />
+      <window_info anchor="bottom" id="Logcat" order="0" sideWeight="0.49946696" visible="true" weight="0.329718" />
       <window_info anchor="bottom" id="TODO" order="1" />
       <window_info anchor="bottom" id="Android Profiler" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" />
@@ -707,7 +728,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="basic keyboard" />
     <MESSAGE value="started work on database intialisation from file" />
-    <option name="LAST_COMMIT_MESSAGE" value="started work on database intialisation from file" />
+    <MESSAGE value="database gets initialised from file on startup" />
+    <option name="LAST_COMMIT_MESSAGE" value="database gets initialised from file on startup" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/build.gradle">
@@ -728,32 +750,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="35" selection-start-line="4" selection-start-column="4" selection-end-line="32" selection-end-column="18" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="38" selection-start-column="38" selection-end-column="38" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/method.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/keys_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -787,24 +785,37 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/SwearDatabase_helper.java" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/loadfromfiile.txt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        <state>
+          <caret column="38" selection-start-column="38" selection-end-column="38" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/swears.txt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/method.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28934">
-          <caret line="1702" column="4" selection-start-line="1702" selection-start-column="4" selection-end-line="1702" selection-end-column="4" />
+        <state relative-caret-position="51">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/assets/replacements.txt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        <state relative-caret-position="476">
+          <caret line="28" column="35" selection-start-line="4" selection-start-column="4" selection-end-line="32" selection-end-column="18" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/DatabaseHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="97" column="46" selection-start-line="97" selection-start-column="46" selection-end-line="97" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -818,23 +829,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/DatabaseHelper.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        <state relative-caret-position="459">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/unholy_guacamole/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/loadfromfiile.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="59" column="28" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/swears.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="1702" column="4" selection-start-line="1702" selection-start-column="4" selection-end-line="1702" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/assets/replacements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>

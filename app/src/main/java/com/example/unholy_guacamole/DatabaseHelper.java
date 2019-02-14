@@ -31,12 +31,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String S_CREATE_TABLE = "CREATE TABLE " + S_TABLE_NAME + "("
-                + S_KEY_ID + " INTEGER PRIMARY KEY, " + S_SWEAR + " TEXT" +")";
+        String S_CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + S_TABLE_NAME + "("
+                + S_KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + S_SWEAR + " TEXT" +")";
         db.execSQL(S_CREATE_TABLE);
 
-        String R_CREATE_TABLE = "CREATE TABLE " + R_TABLE_NAME + "("
-                + R_KEY_ID + " INTEGER PRIMARY KEY, " + R_REPLACEMENT + " TEXT" +")";
+        String R_CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + R_TABLE_NAME + "("
+                + R_KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + R_REPLACEMENT + " TEXT" +")";
         db.execSQL(R_CREATE_TABLE);
 
     }
@@ -70,16 +70,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void check_table_size(){
+    public long check_table_size(){
         //returns the number of rows (notes) in the database
         SQLiteDatabase database = this.getReadableDatabase();
         long row_count_s = DatabaseUtils.queryNumEntries(database, S_TABLE_NAME);
-        long row_count_r = DatabaseUtils.queryNumEntries(database, R_TABLE_NAME);
+        //long row_count_r = DatabaseUtils.queryNumEntries(database, R_TABLE_NAME);
         database.close();
 
-        Log.d("d_tag", "swears: "+String.valueOf(row_count_s) + "\nreplacesments: " + String.valueOf(row_count_r));
+        //Log.d("d_tag", "swears: "+String.valueOf(row_count_s) + "\nreplacesments: " + String.valueOf(row_count_r));
+        return row_count_s;
     }
 
+    public void return_replacement(int row_id){
+        //returns a single replacement_word from the database.
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery(
+                "SELECT "+R_REPLACEMENT + " FROM " + R_TABLE_NAME + " WHERE " + R_KEY_ID + " = " + String.valueOf(row_id), null);
+        if (cursor != null){
+            cursor.moveToFirst();
+            String rep = "empty cursor";
+           try{
+                rep =cursor.getString(0);
+            }catch (Exception e){
+                Log.d(D_TAG, e.toString());
+            }
+            cursor.close();
+            database.close();
+            Log.d("d_tag","found replacement: " + rep);
+        }else{
+            cursor.close();
+            database.close();
+            Log.d("d_tag"," blank cursor");
+        }
+    }
 
 
 }
