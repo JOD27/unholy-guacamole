@@ -71,14 +71,14 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                     break;
                 case 32:
                     if (DBhelper.search_swears(composing.toString())) {
-                        replacement = DBhelper.generate_random_word() + " ";
+                        replacement = DBhelper.generate_random_word();
                         inputConnection.deleteSurroundingText(composing.length(), 0);
                         inputConnection.commitText(replacement, replacement.length());
                         composing.setLength(0);
                     }
 
                     if (composing.length() == 0) {
-                        inputConnection.commitText("  ", 1);
+                        inputConnection.commitText(" ", 1);
                     }
 
 

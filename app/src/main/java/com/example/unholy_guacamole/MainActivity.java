@@ -52,19 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void setup_button(View v){
         DBhelper = new DatabaseHelper(this);
-        DBhelper.deleteData();    //used for testing creation and deletion of databsese
+        //DBhelper.deleteData();    //used for testing creation and deletion of databsese
 
         //if assets directory is not empty, read from file, generate table and delete from file.
         //else if asseets directory is emtpty, do nothing
-
+        TextView tv = (TextView)findViewById(R.id.textView3);
         if(DBhelper.get_r_table_size() == 0){
-            TextView tv = (TextView)findViewById(R.id.textView3);
             Log.d("d_tag", "doing setup");
-            tv.setText("please wait");
-            Log.d("d_tag", "doing setup 2");
             create_from_assets();
-            tv.setText("setup complete");
         }
+        tv.setText("setup complete");
         //used for testing that all databases had been initialised
         //String replacement = DBhelper.return_replacement(2);     //testing the database
         //boolean exists = DBhelper.search_swears("xxx");
