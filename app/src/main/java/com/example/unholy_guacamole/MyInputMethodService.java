@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class MyInputMethodService extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
@@ -16,6 +17,9 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
     private boolean caps = false;
     DatabaseHelper DBhelper = new DatabaseHelper(this);
     private int s_table_size =0;
+
+    private StringBuilder composing = new StringBuilder();
+    private String replacement;
 
     @Override
     public View onCreateInputView() {
@@ -43,13 +47,19 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
         if (inputConnection != null) {
             switch(primaryCode) {
                 case Keyboard.KEYCODE_DELETE :
-                CharSequence selectedText = inputConnection.getSelectedText(0);
+                    CharSequence selectedText = inputConnection.getSelectedText(0);
 
-                if (TextUtils.isEmpty(selectedText)) {
-                    inputConnection.deleteSurroundingText(1, 0);
-                } else {
-                    inputConnection.commitText("", 1);
-                }
+                    if (TextUtils.isEmpty(selectedText)) {
+                        inputConnection.deleteSurroundingText(1, 0);
+                    } else {
+                        inputConnection.commitText("", 1);
+                    }
+
+                    if (composing.length() > 1) {
+                        composing.delete(composing.length() - 1, composing.length());
+                    } else if (composing.length() > 0) {
+                        composing.setLength(0);
+                    }
                     break;
                 case Keyboard.KEYCODE_SHIFT:
                     caps = !caps;
@@ -61,13 +71,24 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
 
                     break;
                 case 32:
-                    //example place to generate random words and input in table
-                    Log.d("d_tag", DBhelper.generate_random_word());
+                    if (DBhelper.search_swears(composing.toString())) {
+                        replacement = DBhelper.return_replacement(ThreadLocalRandom.current().nextInt(0, 99)) + " ";
+                        inputConnection.deleteSurroundingText(composing.length(), 0);
+                        inputConnection.commitText(replacement, replacement.length());
+                    }
+
+                    if (composing.length() == 0) {
+                        inputConnection.commitText(" ", 1);
+                    }
+
+                    composing.setLength(0);
+                    break;
                 default :
                     char code = (char) primaryCode;
                     if(Character.isLetter(code) && caps){
                         code = Character.toUpperCase(code);
                     }
+                    composing.append(code);
                     inputConnection.commitText(String.valueOf(code), 1);
 
 
