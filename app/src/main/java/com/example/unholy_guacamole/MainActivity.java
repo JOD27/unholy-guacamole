@@ -3,7 +3,10 @@ package com.example.unholy_guacamole;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -17,25 +20,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        EditText messageInput = (EditText) findViewById(R.id.editText);
-        messageInput.getText().append(	"\uD83E\uDD14");
-
-        DBhelper = new DatabaseHelper(this);
-        //DBhelper.deleteData();    //used for testing creation and deletion of databsese
-
-        //if assets directory is not empty, read from file, generate table and delete from file.
-        //else if asseets directory is emtpty, do nothing
-
-        if(DBhelper.get_r_table_size() == 0){
-            Log.d("d_tag", "doing setup");
-            create_from_assets();
-        }
-        //used for testing that all databases had been initialised
-        //String replacement = DBhelper.return_replacement(2);     //testing the database
-        //boolean exists = DBhelper.search_swears("xxx");
-        //boolean doesnt_exist = DBhelper.search_swears("xxas");
-        //Log.d("d_tag", replacement + " 0: " + exists + " 1: " + doesnt_exist);
     }
 
 
@@ -66,6 +50,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void setup_button(View v){
+        DBhelper = new DatabaseHelper(this);
+        DBhelper.deleteData();    //used for testing creation and deletion of databsese
 
+        //if assets directory is not empty, read from file, generate table and delete from file.
+        //else if asseets directory is emtpty, do nothing
+
+        if(DBhelper.get_r_table_size() == 0){
+            TextView tv = (TextView)findViewById(R.id.textView3);
+            Log.d("d_tag", "doing setup");
+            tv.setText("please wait");
+            Log.d("d_tag", "doing setup 2");
+            create_from_assets();
+            tv.setText("setup complete");
+        }
+        //used for testing that all databases had been initialised
+        //String replacement = DBhelper.return_replacement(2);     //testing the database
+        //boolean exists = DBhelper.search_swears("xxx");
+        //boolean doesnt_exist = DBhelper.search_swears("xxas");
+        //Log.d("d_tag", replacement + " 0: " + exists + " 1: " + doesnt_exist);
+    }
 
 }

@@ -16,7 +16,6 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
     private Keyboard keyboard;
     private boolean caps = false;
     DatabaseHelper DBhelper = new DatabaseHelper(this);
-    private int s_table_size =0;
 
     private StringBuilder composing = new StringBuilder();
     private String replacement;
@@ -72,16 +71,17 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                     break;
                 case 32:
                     if (DBhelper.search_swears(composing.toString())) {
-                        replacement = DBhelper.return_replacement(ThreadLocalRandom.current().nextInt(0, 99)) + " ";
+                        replacement = DBhelper.generate_random_word() + " ";
                         inputConnection.deleteSurroundingText(composing.length(), 0);
                         inputConnection.commitText(replacement, replacement.length());
+                        composing.setLength(0);
                     }
 
                     if (composing.length() == 0) {
-                        inputConnection.commitText(" ", 1);
+                        inputConnection.commitText("  ", 1);
                     }
 
-                    composing.setLength(0);
+
                     break;
                 default :
                     char code = (char) primaryCode;

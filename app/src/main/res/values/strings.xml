@@ -2,5 +2,6 @@
     <string name="app_name">unholy-guacamole</string>
     <string name="action_settings">Settings</string>
     <string name= "thinking">\uD83E\uDD14</string>
-
+    <string name="setup">Click to setup keyboard. \nThis will take a while but only needs to be
+    done once.</string>
 </resources>

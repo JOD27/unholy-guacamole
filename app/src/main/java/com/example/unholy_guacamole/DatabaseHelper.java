@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String R_KEY_ID = "r_id";
     public static final String R_REPLACEMENT = "replacement";
 
-    public int s_table_size = -1;
+    public int r_table_size = -1;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -119,14 +119,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public String generate_random_word(){
-        if (s_table_size == -1){
-            s_table_size = (int) get_r_table_size();
+        if (r_table_size == -1){
+            r_table_size = (int) get_r_table_size();
         }
-        int rand = new Random().nextInt(s_table_size) +1;
+        int rand = new Random(System.currentTimeMillis()).nextInt(r_table_size) +1;
         // +1 is to get rid of case where 0 appears and has no index in table
         return return_replacement(rand);
-
     }
+
 
 
 }
