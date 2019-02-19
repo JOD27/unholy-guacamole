@@ -76,11 +76,7 @@ public class MyInputMethodService extends InputMethodService implements Keyboard
                         inputConnection.commitText(replacement, replacement.length());
                         composing.setLength(0);
                     }
-
-                    if (composing.length() == 0) {
-                        inputConnection.commitText(" ", 1);
-                    }
-
+                    inputConnection.commitText(" ", 1);
 
                     break;
                 default :
