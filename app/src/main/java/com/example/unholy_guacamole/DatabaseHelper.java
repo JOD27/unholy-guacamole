@@ -25,6 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String R_REPLACEMENT = "replacement";
 
     public int r_table_size = -1;
+    public SQLiteDatabase writedb;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -63,11 +64,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void add_entry(final String val, final String table_name,final String col){
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(col, val);
-        db.insert(table_name, null, contentValues);
-        db.close();
+        writedb.insert(table_name, null, contentValues);
 
     }
 
@@ -76,7 +75,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getReadableDatabase();
         long row_count_r = DatabaseUtils.queryNumEntries(database, R_TABLE_NAME);
         database.close();
-
         return row_count_r;
     }
 

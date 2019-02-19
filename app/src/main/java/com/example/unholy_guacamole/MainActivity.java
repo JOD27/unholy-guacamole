@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private String s_file = "swears.txt";   //file with swears
     private String r_file = "replacements.txt";   //file with replacements for swears
     private DatabaseHelper DBhelper;
+    private boolean pressed = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +27,16 @@ public class MainActivity extends AppCompatActivity {
     private void create_from_assets(){
         //create database from file
         //create swear table
-        read_file_to_db(s_file, DatabaseHelper.S_TABLE_NAME, DatabaseHelper.S_SWEAR);
-        read_file_to_db(r_file, DatabaseHelper.R_TABLE_NAME, DatabaseHelper.R_REPLACEMENT);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                DBhelper.writedb = DBhelper.getWritableDatabase();
+                read_file_to_db(s_file, DatabaseHelper.S_TABLE_NAME, DatabaseHelper.S_SWEAR);
+                read_file_to_db(r_file, DatabaseHelper.R_TABLE_NAME, DatabaseHelper.R_REPLACEMENT);
+                DBhelper.writedb.close();
+            }
+        }).start();
 
     }
 
@@ -54,13 +63,13 @@ public class MainActivity extends AppCompatActivity {
         DBhelper = new DatabaseHelper(this);
         //DBhelper.deleteData();    //used for testing creation and deletion of databsese
 
-        //if assets directory is not empty, read from file, generate table and delete from file.
-        //else if asseets directory is emtpty, do nothing
         TextView tv = (TextView)findViewById(R.id.textView3);
-        if(DBhelper.get_r_table_size() == 0){
+        if(DBhelper.get_r_table_size() == 0 && !pressed){
             Log.d("d_tag", "doing setup");
             create_from_assets();
+
         }
+        pressed = true;
         tv.setText("setup complete");
         //used for testing that all databases had been initialised
         //String replacement = DBhelper.return_replacement(2);     //testing the database
