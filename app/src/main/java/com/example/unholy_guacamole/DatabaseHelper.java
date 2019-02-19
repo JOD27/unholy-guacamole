@@ -107,7 +107,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(querey, null);
         boolean exists= false;
         if (cursor != null && cursor.moveToFirst() && cursor.getInt(0) == 1){
-            Log.d("d_tag", "found swear in table");
+            //Log.d("d_tag", "found swear in table");
             exists = true;
             cursor.close();
         }

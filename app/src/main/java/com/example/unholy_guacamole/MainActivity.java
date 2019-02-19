@@ -1,12 +1,11 @@
 package com.example.unholy_guacamole;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -31,10 +30,13 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
+
                 DBhelper.writedb = DBhelper.getWritableDatabase();
                 read_file_to_db(s_file, DatabaseHelper.S_TABLE_NAME, DatabaseHelper.S_SWEAR);
                 read_file_to_db(r_file, DatabaseHelper.R_TABLE_NAME, DatabaseHelper.R_REPLACEMENT);
                 DBhelper.writedb.close();
+
+                Log.d("d_tag", "setup complete");
             }
         }).start();
 
@@ -63,19 +65,28 @@ public class MainActivity extends AppCompatActivity {
         DBhelper = new DatabaseHelper(this);
         //DBhelper.deleteData();    //used for testing creation and deletion of databsese
 
-        TextView tv = (TextView)findViewById(R.id.textView3);
-        if(DBhelper.get_r_table_size() == 0 && !pressed){
+        final TextView tv = (TextView)findViewById(R.id.textView3);
+        if(!pressed && DBhelper.get_r_table_size() == 0){
+            pressed = true;
             Log.d("d_tag", "doing setup");
             create_from_assets();
+            new CountDownTimer(30000, 1000){
+                @Override
+                public void onTick(long l) {
+                    String str = String.valueOf((int)l/1000) + "/30 seconds remain";
+                    tv.setText(str);
+                }
 
+                @Override
+                public void onFinish() {
+                    tv.setText("setup complete");
+                }
+            }.start();
         }
         pressed = true;
+
         tv.setText("setup complete");
-        //used for testing that all databases had been initialised
-        //String replacement = DBhelper.return_replacement(2);     //testing the database
-        //boolean exists = DBhelper.search_swears("xxx");
-        //boolean doesnt_exist = DBhelper.search_swears("xxas");
-        //Log.d("d_tag", replacement + " 0: " + exists + " 1: " + doesnt_exist);
+        //TODO check for when setup in text is finished
     }
 
 }
