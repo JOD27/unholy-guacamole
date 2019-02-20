@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             new CountDownTimer(30000, 1000){
                 @Override
                 public void onTick(long l) {
-                    String str = String.valueOf((int)l/1000) + "/30 seconds remain";
+                    String str = String.valueOf((int)l/1000) + "/30 sec remain";
                     tv.setText(str);
                 }
 
